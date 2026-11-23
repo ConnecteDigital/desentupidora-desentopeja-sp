@@ -159,36 +159,6 @@ export const servicos: Servico[] = [
     ],
   },
   {
-    slug: 'limpeza-de-caixa-de-gordura',
-    nome: 'Limpeza de Caixa de Gordura',
-    keyword: 'Limpeza de caixa de gordura',
-    resumo: 'Caixa de gordura cheia entope a pia e dá mau cheiro. Limpamos e desobstruímos.',
-    metaDescription:
-      'Limpeza e desentupimento de caixa de gordura em São Paulo e no ABC. Casas, prédios e restaurantes, 24 horas. Chame a Desentope Já no WhatsApp.',
-    icon: 'grease',
-    intro: [
-      'A caixa de gordura segura a gordura da cozinha antes que ela chegue à rede de esgoto. Quando enche, a pia começa a entupir, aparece mau cheiro e a gordura pode transbordar.',
-      'Fazemos a limpeza completa da caixa e desobstruímos a entrada e a saída, em casas, condomínios, restaurantes e cozinhas industriais.',
-    ],
-    sinais: [
-      'Pia da cozinha entupindo com frequência',
-      'Mau cheiro de gordura perto da caixa',
-      'Gordura transbordando pela tampa',
-    ],
-    comoFazemos: [
-      'Abrimos a caixa e retiramos a gordura acumulada',
-      'Desobstruímos a entrada vinda da pia e a saída para o esgoto',
-      'Testamos o escoamento',
-      'Orientamos sobre a frequência ideal de limpeza',
-    ],
-    faq: [
-      {
-        q: 'De quanto em quanto tempo limpar a caixa de gordura?',
-        a: 'Em casas, em média a cada 3 a 6 meses. Em restaurantes e cozinhas com muito movimento, o intervalo é bem menor. Avaliamos e indicamos o ideal para o seu caso.',
-      },
-    ],
-  },
-  {
     slug: 'desentupimento-de-coluna',
     nome: 'Desentupimento de Coluna de Prédio',
     keyword: 'Desentupimento de coluna de prédio e condomínio',

@@ -26,4 +26,4 @@ O sifão é a peça em curva embaixo da pia. Coloque um balde embaixo, desrosque
 
 ## Quando chamar a desentupidora
 
-Se depois do desentupidor e da limpeza do sifão a água continua parada, o entupimento está mais para dentro da tubulação ou na caixa de gordura. Aí é preciso máquina. A Desentope Já atende 24 horas e desentope sem quebrar parede na grande maioria dos casos.
+Se depois do desentupidor e da limpeza do sifão a água continua parada, o entupimento está mais para dentro da tubulação. Aí é preciso máquina. A Desentope Já atende 24 horas e desentope sem quebrar parede na grande maioria dos casos.

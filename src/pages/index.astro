@@ -7,7 +7,8 @@ import FaqList from '../components/FaqList.astro';
 import Icon from '../components/Icon.astro';
 import Gallery from '../components/Gallery.astro';
 import Splash from '../components/Splash.astro';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
+import fotoCelular from '../assets/hero-celular.jpg';
 import logo from '../assets/logo.png';
 import { totalFotos } from '../data/fotos';
 import { site, whatsappUrl } from '../data/site';
@@ -44,11 +45,13 @@ const marquee = [
   'Vaso entupido',
   'Ralo empoçando',
   'Esgoto voltando',
-  'Caixa de gordura',
   'Coluna de prédio',
   'Hidrojateamento',
   'Atendimento 24h',
 ];
+
+// No celular o topo mostra a foto do técnico no lugar do selo (só uma das duas é baixada)
+const heroCelular = await getImage({ src: fotoCelular, widths: [480, 800, 1100], format: 'webp' });
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.data.getTime() - a.data.data.getTime())
@@ -83,7 +86,7 @@ const posts = (await getCollection('blog'))
           <span class="h1-sub">Desentupidora 24 horas em São Paulo e ABC</span>
         </h1>
         <p class="hero-lead">
-          Pia, vaso, ralo, esgoto e caixa de gordura. Equipamento profissional e sem quebra-quebra.
+          Pia, vaso, ralo, esgoto e coluna de prédio. Equipamento profissional e sem quebra-quebra.
         </p>
         <CtaButtons />
         <ul class="hero-badges">
@@ -92,7 +95,8 @@ const posts = (await getCollection('blog'))
           <li><Icon name="shield" size={20} /> <span>Serviço com garantia</span></li>
         </ul>
       </div>
-      <div class="hero-seal">
+      <picture class="hero-seal">
+        <source media="(max-width: 959px)" srcset={heroCelular.srcSet.attribute} sizes="100vw" type="image/webp" />
         <Image
           src={logo}
           alt={`${site.name} – Desentupidora 24h – WhatsApp ${site.phoneDisplay}`}
@@ -101,8 +105,8 @@ const posts = (await getCollection('blog'))
           loading="eager"
           fetchpriority="high"
         />
-        <div class="drops" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-      </div>
+        <span class="drops" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      </picture>
     </div>
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">

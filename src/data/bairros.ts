@@ -23,7 +23,7 @@ export const bairros: Bairro[] = [
     zona: 'Zona Oeste',
     cidade: 'São Paulo',
     sobre:
-      'O Itaim Bibi concentra prédios residenciais altos, escritórios, bares e restaurantes. Por isso, além de pia e vaso entupidos em apartamentos, são comuns chamados de caixa de gordura em cozinhas comerciais e de coluna de esgoto em condomínios.',
+      'O Itaim Bibi concentra prédios residenciais altos, escritórios, bares e restaurantes. Por isso, além de pia e vaso entupidos em apartamentos, são comuns chamados de esgoto em cozinhas comerciais e de coluna em condomínios.',
     vizinhos: ['Vila Olímpia', 'Jardim Paulistano', 'Vila Nova Conceição', 'Brooklin'],
   },
   {
@@ -33,7 +33,7 @@ export const bairros: Bairro[] = [
     zona: 'Zona Oeste',
     cidade: 'São Paulo',
     sobre:
-      'Em Pinheiros convivem casas antigas, prédios novos e muitos bares e restaurantes. Nas casas antigas a rede de esgoto costuma ter mais gordura e sujeira acumulada; nos comércios, a caixa de gordura precisa de limpeza frequente.',
+      'Em Pinheiros convivem casas antigas, prédios novos e muitos bares e restaurantes. Nas casas antigas a rede de esgoto costuma ter mais gordura e sujeira acumulada; nos comércios, os chamados mais comuns são de esgoto e ralo entupidos.',
     vizinhos: ['Vila Madalena', 'Alto de Pinheiros', 'Jardim Paulistano', 'Butantã'],
   },
   {
@@ -53,7 +53,7 @@ export const bairros: Bairro[] = [
     zona: 'Zona Leste',
     cidade: 'São Paulo',
     sobre:
-      'O Tatuapé cresceu com muitos prédios altos e mantém ruas de casas e sobrados e um comércio forte. Atendemos desde pia e ralo entupidos em apartamentos até rede de esgoto de casas e caixa de gordura de restaurantes.',
+      'O Tatuapé cresceu com muitos prédios altos e mantém ruas de casas e sobrados e um comércio forte. Atendemos desde pia e ralo entupidos em apartamentos até rede de esgoto de casas e comércios.',
     vizinhos: ['Anália Franco', 'Carrão', 'Vila Formosa', 'Mooca'],
   },
   {
@@ -63,7 +63,7 @@ export const bairros: Bairro[] = [
     zona: 'ABC Paulista',
     cidade: 'Santo André',
     sobre:
-      'Em Santo André atendemos casas, prédios, comércios e indústrias, do Centro à Vila Assunção, Jardim e Utinga. Desentupimos pia, vaso, ralo, esgoto e fazemos limpeza de caixa de gordura 24 horas.',
+      'Em Santo André atendemos casas, prédios, comércios e indústrias, do Centro à Vila Assunção, Jardim e Utinga. Desentupimos pia, vaso, ralo e esgoto 24 horas.',
     vizinhos: ['São Caetano do Sul', 'São Bernardo do Campo', 'Mauá', 'Utinga'],
   },
   {
@@ -93,7 +93,7 @@ export const bairros: Bairro[] = [
     zona: 'ABC Paulista',
     cidade: 'Diadema',
     sobre:
-      'Em Diadema atendemos casas, sobrados, comércios e indústrias, do Centro a Piraporinha, Eldorado e Serraria. Desentupimento de esgoto, ralo e caixa de gordura, 24 horas.',
+      'Em Diadema atendemos casas, sobrados, comércios e indústrias, do Centro a Piraporinha, Eldorado e Serraria. Desentupimento de pia, vaso, ralo e esgoto, 24 horas.',
     vizinhos: ['Centro', 'Piraporinha', 'São Bernardo do Campo', 'Eldorado'],
   },
 ];

@@ -16,7 +16,7 @@ export const site = {
   tel: `tel:+${PHONE_DIGITS}`,
   regioes: 'Itaim Bibi, Pinheiros, Perdizes, Tatuapé e ABC Paulista',
   description:
-    'Desentupidora 24 horas em São Paulo e no ABC. Desentupimento de pia, vaso sanitário, ralo, esgoto, caixa de gordura e coluna de prédio. Atendemos Itaim Bibi, Pinheiros, Perdizes, Tatuapé e ABC.',
+    'Desentupidora 24 horas em São Paulo e no ABC. Desentupimento de pia, vaso sanitário, ralo, esgoto e coluna de prédio. Atendemos Itaim Bibi, Pinheiros, Perdizes, Tatuapé e ABC.',
 };
 
 export const DEFAULT_WHATSAPP_MESSAGE = 'Olá! Vim pelo site da Desentope Já e preciso de um desentupimento.';

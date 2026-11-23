@@ -10,7 +10,6 @@ const alts: Record<string, string> = {
   'desentupimento-de-vaso-sanitario': 'Desentupimento de vaso sanitário feito pela Desentope Já',
   'desentupimento-de-ralo': 'Limpeza de ralo e caixa sifonada entupidos',
   'desentupimento-de-esgoto': 'Máquina de desentupimento na caixa de inspeção de esgoto',
-  'limpeza-de-caixa-de-gordura': 'Limpeza de caixa de gordura feita pela Desentope Já',
   'desentupimento-de-coluna': 'Desentupimento de coluna de esgoto em prédio',
   hidrojateamento: 'Hidrojateamento de tubulação de esgoto com água em alta pressão',
 };
