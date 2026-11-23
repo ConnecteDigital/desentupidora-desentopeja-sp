@@ -302,7 +302,6 @@ export function startIntro(canvas: HTMLCanvasElement, cb: IntroCallbacks, opts: 
 
   // ---------- água suja ----------
   // nível da água dentro da caixa do ralo
-  const dirtyColor = new THREE.Color(0x5b4a33);
   const pitWater = new THREE.Mesh(
     new THREE.PlaneGeometry(HOLE, HOLE),
     new THREE.MeshStandardMaterial({ color: 0x3d3122, roughness: 0.05, metalness: 0.2, transparent: true, opacity: 0.92 }),
@@ -365,19 +364,8 @@ export function startIntro(canvas: HTMLCanvasElement, cb: IntroCallbacks, opts: 
   rig.add(puddleEdge);
 
   // gotas/respingos de água suja e bolhas
-  const waterMat = preview
-    ? new THREE.MeshStandardMaterial({ color: 0x6d5a3e, roughness: 0.05, metalness: 0.1, transparent: true, opacity: 0.85 })
-    : new THREE.MeshPhysicalMaterial({
-        color: 0xffffff,
-        roughness: 0.03,
-        transmission: 1,
-        thickness: 0.06,
-        ior: 1.33,
-        attenuationColor: dirtyColor,
-        attenuationDistance: 0.04,
-        specularIntensity: 1,
-        envMapIntensity: 1.5,
-      });
+  // respingos: material opaco-brilhante (com refração as gotas finas ficavam pretas)
+  const waterMat = new THREE.MeshStandardMaterial({ color: 0x7a6446, roughness: 0.05, metalness: 0.1, transparent: true, opacity: 0.88, envMapIntensity: 1.6 });
   const MAX = 420;
   const drops = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 14, 10), waterMat, MAX);
   drops.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
