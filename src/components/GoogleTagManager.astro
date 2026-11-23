@@ -22,6 +22,11 @@ const { part } = Astro.props;
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', gtmId);
+      // gtag() disponível, como no código enviado pelo cliente
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+      window.gtag('js', new Date());
     </script>
   ) : (
     <noscript>
