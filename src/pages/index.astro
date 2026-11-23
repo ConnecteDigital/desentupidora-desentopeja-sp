@@ -1,0 +1,280 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaButtons from '../components/CtaButtons.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import FaqList from '../components/FaqList.astro';
+import Icon from '../components/Icon.astro';
+import Gallery from '../components/Gallery.astro';
+import Splash from '../components/Splash.astro';
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { totalFotos } from '../data/fotos';
+import { site, whatsappUrl } from '../data/site';
+import { servicos } from '../data/servicos';
+import { bairros, bairrosPorZona, bairroPath } from '../data/bairros';
+import { faqSchema } from '../data/schema';
+import { getCollection } from 'astro:content';
+
+const faq = [
+  {
+    q: 'A desentupidora atende 24 horas mesmo?',
+    a: 'Sim. A Desentope Já atende 24 horas por dia, 7 dias por semana, inclusive fins de semana e feriados.',
+  },
+  {
+    q: 'Quais regiões vocês atendem?',
+    a: `Atendemos ${site.regioes}: Itaim Bibi, Pinheiros, Perdizes, Tatuapé, Santo André, São Bernardo do Campo, São Caetano do Sul e Diadema.`,
+  },
+  {
+    q: 'Precisa quebrar o piso ou a parede para desentupir?',
+    a: 'Na grande maioria dos casos, não. Usamos máquinas que entram pela própria tubulação até a obstrução. Só indicamos abertura se houver cano quebrado, e sempre conversando com você antes.',
+  },
+  {
+    q: 'Atendem prédios, condomínios e comércios?',
+    a: 'Sim. Além de casas e apartamentos, atendemos condomínios, restaurantes, lojas e empresas, inclusive fora do horário comercial.',
+  },
+  {
+    q: 'Como chamo a Desentope Já?',
+    a: 'É só chamar no WhatsApp ou ligar. Conte o que está entupido e o endereço; se puder, mande uma foto ou vídeo.',
+  },
+];
+
+const marquee = [
+  'Pia entupida',
+  'Vaso entupido',
+  'Ralo empoçando',
+  'Esgoto voltando',
+  'Caixa de gordura',
+  'Coluna de prédio',
+  'Hidrojateamento',
+  'Atendimento 24h',
+];
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.data.getTime() - a.data.data.getTime())
+  .slice(0, 3);
+---
+
+<Base
+  title="Desentupidora 24h em São Paulo e ABC | Desentope Já"
+  description={site.description}
+  schema={[faqSchema(faq)]}
+>
+  <script slot="head" is:inline>
+    // Abertura rápida: uma vez por sessão e nunca para quem pediu menos movimento
+    (function () {
+      try {
+        if (sessionStorage.getItem('splashVisto')) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        sessionStorage.setItem('splashVisto', '1');
+        document.documentElement.classList.add('splash-on');
+      } catch (e) {}
+    })();
+  </script>
+  <Splash slot="top" />
+
+  <section class="hero hero-home">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="pulse" aria-hidden="true"></span> Plantão 24 horas · SP e ABC</span>
+        <h1>
+          <span class="line chrome">Entupiu?</span>
+          <span class="line hot">Desentope Já!</span>
+          <span class="h1-sub">Desentupidora 24 horas em São Paulo e ABC</span>
+        </h1>
+        <p class="hero-lead">
+          Pia, vaso, ralo, esgoto e caixa de gordura. Equipamento profissional e sem quebra-quebra.
+        </p>
+        <CtaButtons />
+        <ul class="hero-badges">
+          <li><Icon name="clock" size={20} /> <span>24h, inclusive feriados</span></li>
+          <li><Icon name="tool" size={20} /> <span>Máquinas profissionais</span></li>
+          <li><Icon name="shield" size={20} /> <span>Serviço com garantia</span></li>
+        </ul>
+      </div>
+      <div class="hero-seal">
+        <Image
+          src={logo}
+          alt={`${site.name} – Desentupidora 24h – WhatsApp ${site.phoneDisplay}`}
+          width={470}
+          densities={[1, 1.5, 2]}
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="drops" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        {[...marquee, ...marquee].map((m) => <span>{m}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" aria-label="Diferenciais">
+    <div class="container trust-grid">
+      <div class="trust-item"><Icon name="clock" size={34} /><div><strong>24 horas</strong><span>Todos os dias, inclusive feriados</span></div></div>
+      <div class="trust-item"><Icon name="tool" size={34} /><div><strong>Sem quebrar</strong><span>Desentupimos por dentro do cano</span></div></div>
+      <div class="trust-item"><Icon name="building" size={34} /><div><strong>Casa e prédio</strong><span>Residências, condomínios e comércios</span></div></div>
+      <div class="trust-item"><Icon name="pin" size={34} /><div><strong>SP e ABC</strong><span>Zona Oeste, Tatuapé e ABC</span></div></div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="servicos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">O que a gente desentope</span>
+        <h2>Serviços de <span class="yel">desentupidora</span></h2>
+        <p>Do sifão da pia à coluna do prédio: resolvemos o entupimento com a máquina certa para cada caso.</p>
+      </div>
+      <div class="services-grid">
+        {servicos.map((s) => <ServiceCard servico={s} />)}
+        <a class="service-card" href={whatsappUrl('Olá! Vim pelo site da Desentope Já e tenho um entupimento para resolver.')} target="_blank" rel="noopener" style="background:linear-gradient(160deg,#1a0200,#0f0f10);border-color:rgba(225,6,0,.5)">
+          <span class="service-icon" style="background:linear-gradient(145deg,#1fae4b,#189a41);color:#fff"><Icon name="whatsapp" size={30} /></span>
+          <h3>Outro entupimento?</h3>
+          <p>Mande uma foto ou vídeo pelo WhatsApp e a gente diz na hora como resolver.</p>
+          <span class="service-more">Chamar no WhatsApp <Icon name="arrow" size={16} /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Como funciona</span>
+        <h2>Do <span class="hot">entupido</span> ao <span class="yel">resolvido</span></h2>
+        <p>Sem enrolação: você chama, a gente vai até aí e desentope.</p>
+      </div>
+      <div class="steps">
+        <div class="step-card">
+          <h3>Chame no WhatsApp ou ligue</h3>
+          <p>Conte o que está entupido e onde fica. Se puder, mande uma foto ou um vídeo.</p>
+        </div>
+        <div class="step-card">
+          <h3>A equipe vai até você</h3>
+          <p>Um técnico sai com as máquinas certas para o seu tipo de entupimento, a qualquer hora.</p>
+        </div>
+        <div class="step-card">
+          <h3>Desentupido e testado</h3>
+          <p>Desobstruímos, testamos o escoamento com água na sua frente e deixamos o local limpo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about-grid">
+      <div class="about-stat">
+        <span class="big"><span class="chrome">24</span><span class="hot">h</span></span>
+        <span class="big-sub">Plantão todo dia</span>
+        <p>Entupimento não marca hora. Atendemos de madrugada, fins de semana e feriados.</p>
+        <CtaButtons size="md" />
+      </div>
+      <div>
+        <div class="section-head">
+          <span class="eyebrow">Por que a Desentope Já</span>
+          <h2>Desentupidora de <span class="yel">confiança</span>, a qualquer hora</h2>
+          <p>Equipe preparada e equipamento profissional para resolver de uma pia entupida a uma rede de esgoto inteira.</p>
+        </div>
+        <div class="features">
+          <div class="feature">
+            <Icon name="clock" size={30} />
+            <div><h3>Plantão 24 horas</h3><p>Atendemos dia e noite, 7 dias por semana, inclusive feriados.</p></div>
+          </div>
+          <div class="feature">
+            <Icon name="tool" size={30} />
+            <div><h3>Sem quebra-quebra</h3><p>Máquinas de cabo rotativo e hidrojateamento alcançam o entupimento por dentro do cano.</p></div>
+          </div>
+          <div class="feature">
+            <Icon name="building" size={30} />
+            <div><h3>Casa, prédio e comércio</h3><p>Apartamentos, sobrados, condomínios, restaurantes e empresas.</p></div>
+          </div>
+          <div class="feature">
+            <Icon name="shield" size={30} />
+            <div><h3>Garantia no serviço</h3><p>Testamos tudo antes de ir embora. Se voltar a dar problema, a gente volta.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+
+  {
+    totalFotos > 1 && (
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Trabalhos realizados</span>
+            <h2>Serviços que já fizemos</h2>
+            <p>Fotos reais de atendimentos da Desentope Já.</p>
+          </div>
+          <Gallery limit={8} />
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section section-soft" id="areas">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Áreas atendidas</span>
+        <h2>Desentupidora <span class="yel">perto de você</span></h2>
+        <p>Atendemos {bairros.length} regiões em São Paulo e no ABC Paulista. Escolha a sua.</p>
+      </div>
+      <div class="zones">
+        {
+          bairrosPorZona().map((g) => (
+            <div class="zone">
+              <h3>{g.zona}</h3>
+              <ul>
+                {g.bairros.map((b) => (
+                  <li>
+                    <a href={bairroPath(b)}>
+                      <Icon name="pin" size={16} /> Desentupidora {b.em}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {
+    posts.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Blog</span>
+            <h2>Dicas contra entupimento</h2>
+          </div>
+          <div class="posts">
+            {posts.map((p) => (
+              <a class="post-card" href={`/blog/${p.id}/`}>
+                <time datetime={p.data.data.toISOString()}>{p.data.data.toLocaleDateString('pt-BR')}</time>
+                <h3>{p.data.titulo}</h3>
+                <p>{p.data.descricao}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section section-soft">
+    <div class="container" style="max-width: 860px">
+      <div class="section-head">
+        <span class="eyebrow">Dúvidas frequentes</span>
+        <h2>Perguntas frequentes</h2>
+      </div>
+      <FaqList items={faq} />
+    </div>
+  </section>
+
+  <CtaBand title="Entupiu agora? Chama a gente!" />
+</Base>

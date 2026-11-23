@@ -1,0 +1,30 @@
+---
+// Abertura rápida da home (só CSS, ~1,6 s): o selo gira e entra com o bordão.
+// Aparece uma vez por sessão; toque ou clique pula. Sem vídeo nem biblioteca, para não pesar.
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+---
+
+<div class="splash" id="splash" aria-hidden="true">
+  <div class="splash-inner">
+    <Image src={logo} alt="" width={300} densities={[1, 2]} loading="eager" />
+    <p><span class="chrome">Entupiu?</span> <span class="hot">Desentope Já!</span></p>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var root = document.documentElement;
+    var el = document.getElementById('splash');
+    if (!root.classList.contains('splash-on')) {
+      if (el) el.remove();
+      return;
+    }
+    function fechar() {
+      root.classList.remove('splash-on');
+      if (el) el.remove();
+    }
+    if (el) el.addEventListener('click', fechar);
+    setTimeout(fechar, 2000);
+  })();
+</script>

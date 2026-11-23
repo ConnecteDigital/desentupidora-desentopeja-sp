@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButtons from '../components/CtaButtons.astro';
+import CtaBand from '../components/CtaBand.astro';
+import FaqList from '../components/FaqList.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { site } from '../data/site';
+import { servicos } from '../data/servicos';
+import { bairros, bairroPath, type Bairro } from '../data/bairros';
+import { breadcrumbSchema, faqSchema } from '../data/schema';
+
+export function getStaticPaths() {
+  return bairros.map((bairro) => ({ params: { slug: bairro.slug }, props: { bairro } }));
+}
+
+interface Props {
+  bairro: Bairro;
+}
+
+const { bairro } = Astro.props;
+const path = bairroPath(bairro);
+const ehCidade = bairro.zona === 'ABC Paulista';
+const onde = ehCidade ? `${bairro.nome} - SP` : `${bairro.nome}, ${bairro.zona} de São Paulo`;
+const crumbs = [
+  { name: 'Início', path: '/' },
+  { name: 'Áreas atendidas', path: '/areas-atendidas/' },
+  { name: `Desentupidora ${bairro.em}`, path },
+];
+const faq = [
+  {
+    q: `A desentupidora atende ${bairro.em} 24 horas?`,
+    a: `Sim. A Desentope Já atende ${bairro.em} 24 horas por dia, inclusive fins de semana e feriados.`,
+  },
+  {
+    q: `Atendem também ${bairro.vizinhos.slice(0, 2).join(' e ')}?`,
+    a: `Sim. Além de ${bairro.nome}, atendemos ${bairro.vizinhos.join(', ')} e as demais regiões: ${site.regioes}.`,
+  },
+  {
+    q: 'Precisa quebrar para desentupir?',
+    a: 'Na maioria dos casos, não. Desentupimos com máquina por dentro da tubulação. Se houver cano quebrado, explicamos antes de qualquer abertura.',
+  },
+  {
+    q: 'O serviço tem garantia?',
+    a: 'Sim. Testamos o escoamento antes de ir embora e o serviço tem garantia.',
+  },
+];
+const outrosBairros = bairros.filter((b) => b.slug !== bairro.slug);
+const msg = `Olá! Vim pelo site da Desentope Já e preciso de desentupidora ${bairro.em}.`;
+---
+
+<Base
+  title={`Desentupidora ${bairro.em} 24h | Desentope Já`}
+  description={`Desentupidora 24 horas ${bairro.em} (${onde}). Pia, vaso sanitário, ralo, esgoto, caixa de gordura e coluna de prédio. Chame a Desentope Já no WhatsApp.`}
+  schema={[faqSchema(faq), breadcrumbSchema(crumbs)]}
+>
+  <section class="hero page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <span class="eyebrow">{ehCidade ? 'ABC Paulista' : `${bairro.zona} · São Paulo`}</span>
+      <h1>Desentupidora {bairro.em} <span class="hot">24 horas</span></h1>
+      <p class="hero-lead">
+        Entupiu {bairro.em}? A Desentope Já atende 24 horas para desentupir pia, vaso, ralo, esgoto e caixa de gordura, em
+        casas, prédios e comércios.
+      </p>
+      <CtaButtons message={msg} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-grid">
+      <article class="prose">
+        <h2>Desentupidora 24h {bairro.em}</h2>
+        <p>{bairro.sobre}</p>
+        <p>
+          Atendemos também os bairros e cidades vizinhos, como {bairro.vizinhos.join(', ')}. É só chamar no WhatsApp ou ligar
+          que a equipe sai com as máquinas certas para o seu tipo de entupimento.
+        </p>
+
+        <h2>O que desentupimos {bairro.em}</h2>
+        <ul>
+          {servicos.map((s) => <li><a href={`/servicos/${s.slug}/`}>{s.nome}</a>: {s.resumo}</li>)}
+        </ul>
+
+        <h2>Perguntas frequentes</h2>
+        <FaqList items={faq} />
+      </article>
+
+      <aside class="sidebar">
+        <div class="side-card">
+          <h2>Desentupidora {bairro.em} agora</h2>
+          <p>Plantão 24 horas. Fale com a gente pelo WhatsApp ou telefone.</p>
+          <CtaButtons message={msg} size="md" />
+        </div>
+        <div class="side-list">
+          <h2>Outras regiões</h2>
+          <ul>
+            {outrosBairros.map((b) => <li><a href={bairroPath(b)}>Desentupidora {b.em}</a></li>)}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Serviços {bairro.em}</span>
+        <h2>Desentupimento {bairro.em}</h2>
+      </div>
+      <div class="services-grid">
+        {servicos.map((s) => <ServiceCard servico={s} />)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title={`Entupiu ${bairro.em}?`} message={msg} />
+</Base>
