@@ -6,7 +6,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 import FaqList from '../components/FaqList.astro';
 import Icon from '../components/Icon.astro';
 import Gallery from '../components/Gallery.astro';
-import Splash from '../components/Splash.astro';
+import IntroVideo from '../components/IntroVideo.astro';
 import { Image } from 'astro:assets';
 import fotoCelular from '../assets/hero-celular.jpg';
 import logo from '../assets/logo.png';
@@ -60,17 +60,21 @@ const posts = (await getCollection('blog'))
   schema={[faqSchema(faq)]}
 >
   <script slot="head" is:inline>
-    // Abertura rápida: uma vez por sessão e nunca para quem pediu menos movimento
+    // Decide antes da primeira pintura se a abertura vai rodar
     (function () {
       try {
-        if (sessionStorage.getItem('splashVisto')) return;
+        if (sessionStorage.getItem('introVista')) return;
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        sessionStorage.setItem('splashVisto', '1');
-        document.documentElement.classList.add('splash-on');
+        var root = document.documentElement;
+        root.classList.add('intro-on');
+        // trava de segurança: se a abertura não começar, o site aparece
+        setTimeout(function () {
+          if (!root.classList.contains('intro-ready')) root.classList.remove('intro-on');
+        }, 8000);
       } catch (e) {}
     })();
   </script>
-  <Splash slot="top" />
+  <IntroVideo slot="top" />
 
   <section class="hero hero-home">
     <Image
