@@ -550,8 +550,9 @@ export function startIntro(canvas: HTMLCanvasElement, cb: IntroCallbacks, opts: 
   type Shot = { t: number; pos: THREE.Vector3; look: THREE.Vector3 };
   function shots(): Shot[] {
     const portrait = camera.aspect < 0.9;
-    const finalPos = portrait ? new THREE.Vector3(0, 1.55, 3.3) : new THREE.Vector3(0, 1.25, 2.6);
-    const finalLook = portrait ? new THREE.Vector3(0, 0.05, -0.75) : new THREE.Vector3(0, 0.22, -0.7);
+    // plano final: ralo e máquina no quadro, encontro piso/parede a ~30% do topo
+    const finalPos = portrait ? new THREE.Vector3(0.45, 0.95, 2.4) : new THREE.Vector3(0.45, 0.85, 2.2);
+    const finalLook = portrait ? new THREE.Vector3(0.45, -0.35, -0.6) : new THREE.Vector3(0.45, -0.1, -0.6);
     return [
       { t: 0, pos: new THREE.Vector3(-0.62, 0.42, 0.7), look: new THREE.Vector3(0.02, 0.0, 0) },
       { t: 1.3, pos: new THREE.Vector3(0.35, 0.55, 0.85), look: new THREE.Vector3(0, 0.02, -0.02) },
