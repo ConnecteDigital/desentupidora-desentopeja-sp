@@ -159,36 +159,6 @@ export const servicos: Servico[] = [
     ],
   },
   {
-    slug: 'desentupimento-de-coluna',
-    nome: 'Desentupimento de Coluna de Prédio',
-    keyword: 'Desentupimento de coluna de prédio e condomínio',
-    resumo: 'Coluna de esgoto ou de cozinha entupida no prédio? Atendemos condomínios 24h.',
-    metaDescription:
-      'Desentupimento de coluna de esgoto e de cozinha em prédios e condomínios, 24h, em São Paulo e no ABC. Chame a Desentope Já no WhatsApp.',
-    icon: 'building',
-    intro: [
-      'Em prédio, quando a coluna entope, a água volta nos apartamentos dos andares de baixo. É uma emergência que afeta vários moradores ao mesmo tempo e precisa ser resolvida rápido.',
-      'Atendemos síndicos, zeladores e administradoras com desentupimento de colunas de esgoto, de cozinha e de águas pluviais, a qualquer hora.',
-    ],
-    sinais: [
-      'Água ou espuma voltando na pia ou no ralo dos andares baixos',
-      'Vários apartamentos reclamando ao mesmo tempo',
-      'Barulho e cheiro na coluna',
-    ],
-    comoFazemos: [
-      'Identificamos a coluna e o andar onde está a obstrução',
-      'Desobstruímos pela visita ou pelo topo da coluna',
-      'Testamos com água em mais de um andar',
-      'Orientamos o condomínio sobre manutenção preventiva',
-    ],
-    faq: [
-      {
-        q: 'Atendem condomínio fora do horário comercial?',
-        a: 'Sim. Atendemos 24 horas, inclusive à noite, fins de semana e feriados.',
-      },
-    ],
-  },
-  {
     slug: 'hidrojateamento',
     nome: 'Hidrojateamento',
     keyword: 'Hidrojateamento de tubulação e esgoto',

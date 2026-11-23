@@ -23,7 +23,7 @@ export const bairros: Bairro[] = [
     zona: 'Zona Oeste',
     cidade: 'São Paulo',
     sobre:
-      'O Itaim Bibi concentra prédios residenciais altos, escritórios, bares e restaurantes. Por isso, além de pia e vaso entupidos em apartamentos, são comuns chamados de esgoto em cozinhas comerciais e de coluna em condomínios.',
+      'O Itaim Bibi concentra prédios residenciais altos, escritórios, bares e restaurantes. Por isso, além de pia e vaso entupidos em apartamentos, são comuns chamados de esgoto em cozinhas comerciais e em condomínios.',
     vizinhos: ['Vila Olímpia', 'Jardim Paulistano', 'Vila Nova Conceição', 'Brooklin'],
   },
   {
@@ -43,7 +43,7 @@ export const bairros: Bairro[] = [
     zona: 'Zona Oeste',
     cidade: 'São Paulo',
     sobre:
-      'Perdizes tem muitos prédios residenciais em ruas de ladeira. Os chamados mais comuns são pia de cozinha entupida, vaso sanitário e coluna de prédio, além de ralo empoçando em casas e sobrados.',
+      'Perdizes tem muitos prédios residenciais em ruas de ladeira. Os chamados mais comuns são pia de cozinha e vaso sanitário entupidos, além de ralo empoçando em casas e sobrados.',
     vizinhos: ['Pompeia', 'Sumaré', 'Barra Funda', 'Água Branca'],
   },
   {
@@ -83,7 +83,7 @@ export const bairros: Bairro[] = [
     zona: 'ABC Paulista',
     cidade: 'São Caetano do Sul',
     sobre:
-      'São Caetano do Sul é compacta, com muitos prédios residenciais e casas antigas em bairros como Santa Paula, Barcelona e Santo Antônio. Coluna de prédio e rede de esgoto de casa antiga estão entre os chamados mais comuns.',
+      'São Caetano do Sul é compacta, com muitos prédios residenciais e casas antigas em bairros como Santa Paula, Barcelona e Santo Antônio. Vaso, ralo e rede de esgoto de casa antiga estão entre os chamados mais comuns.',
     vizinhos: ['Santa Paula', 'Barcelona', 'Santo André', 'São Bernardo do Campo'],
   },
   {
